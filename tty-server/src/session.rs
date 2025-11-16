@@ -1,7 +1,6 @@
 use anyhow::{Result, anyhow};
 use std::collections::HashMap;
 use tokio::sync::mpsc;
-use uuid::Uuid;
 
 use crate::config::Config;
 use crate::db::Database;

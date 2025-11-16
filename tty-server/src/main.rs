@@ -36,6 +36,10 @@ async fn main() -> Result<()> {
     // Create shared state
     let session_manager = Arc::new(RwLock::new(SessionManager::new(db.clone(), config.clone())));
 
+    // Save bind addresses for logging
+    let native_bind = config.server.native_bind.clone();
+    let http_bind = config.server.http_bind.clone();
+
     // Spawn native protocol server
     let native_handle = {
         let session_manager = session_manager.clone();
@@ -59,8 +63,8 @@ async fn main() -> Result<()> {
     };
 
     info!("Server started successfully");
-    info!("  Native protocol: {}", config.server.native_bind);
-    info!("  HTTP/WebSocket: {}", config.server.http_bind);
+    info!("  Native protocol: {}", native_bind);
+    info!("  HTTP/WebSocket: {}", http_bind);
 
     // Wait for both servers
     tokio::select! {

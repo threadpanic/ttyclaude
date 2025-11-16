@@ -1,5 +1,5 @@
 use anyhow::{Result, Context};
-use rusqlite::{Connection, params};
+use rusqlite::{Connection, params, OptionalExtension};
 use std::sync::{Arc, Mutex};
 use uuid::Uuid;
 use chrono::Utc;

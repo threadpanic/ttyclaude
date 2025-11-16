@@ -3,7 +3,7 @@ use tokio::net::{TcpListener, TcpStream};
 use tokio::io::{AsyncReadExt, AsyncWriteExt};
 use tokio::sync::{RwLock, mpsc};
 use std::sync::Arc;
-use bytes::{BytesMut, BufMut, Buf};
+use bytes::{BytesMut, BufMut};
 use tracing::{info, error, debug};
 
 use crate::session::{SessionManager, StreamEvent};
@@ -111,17 +111,17 @@ async fn handle_connection(
                         // Stream tokens back to client
                         drop(sm);
                         while let Some(event) = rx.recv().await {
-                            let msg = match event {
+                            let msg = match &event {
                                 StreamEvent::Token(text) => ServerMessage::Token {
                                     session_id: session_id.clone(),
-                                    content: text,
+                                    content: text.clone(),
                                 },
                                 StreamEvent::Complete => ServerMessage::MessageComplete {
                                     session_id: session_id.clone(),
                                 },
                                 StreamEvent::Error(err) => ServerMessage::Error {
                                     code: "STREAM_ERROR".to_string(),
-                                    message: err,
+                                    message: err.clone(),
                                 },
                             };
 

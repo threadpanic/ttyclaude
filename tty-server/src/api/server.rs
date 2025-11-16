@@ -2,9 +2,6 @@ use anyhow::Result;
 use axum::{
     Router,
     routing::{get, post, delete},
-    extract::{State, Path, WebSocketUpgrade},
-    response::IntoResponse,
-    Json,
 };
 use tower_http::cors::CorsLayer;
 use std::sync::Arc;

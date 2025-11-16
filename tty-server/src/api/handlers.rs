@@ -220,16 +220,16 @@ async fn handle_socket(mut socket: WebSocket, state: AppState) {
 
                                 // Stream tokens
                                 while let Some(event) = rx.recv().await {
-                                    let response = match event {
+                                    let response = match &event {
                                         StreamEvent::Token(text) => WsServerMessage::Token {
                                             session_id: session_id.clone(),
-                                            content: text,
+                                            content: text.clone(),
                                         },
                                         StreamEvent::Complete => WsServerMessage::MessageComplete {
                                             session_id: session_id.clone(),
                                         },
                                         StreamEvent::Error(err) => WsServerMessage::Error {
-                                            message: err,
+                                            message: err.clone(),
                                         },
                                     };
 
