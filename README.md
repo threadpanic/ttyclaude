@@ -168,9 +168,34 @@ See [DESIGN.md](DESIGN.md) for details.
 **Use Claude Code for**: Implementation, debugging, refactoring  
 **Use Web UI for**: Artifacts, images, complex interactions
 
+## ttyclaude2 Quick Start
+
+For the distributed version:
+
+```bash
+# 1. Start session server
+cd tty-server
+cargo run --release
+
+# 2a. Use terminal client
+cd ttyclaude2
+cargo run --release
+
+# 2b. Or use web client
+cd tty-web
+npm install && npm run dev
+# Open http://localhost:5173
+```
+
+See individual READMEs for details:
+- [tty-server/README.md](tty-server/README.md) - Session server
+- [ttyclaude2/README.md](ttyclaude2/README.md) - Terminal client
+- [tty-web/README.md](tty-web/README.md) - Web client
+- [ARCHITECTURE.md](ARCHITECTURE.md) - Full technical specs
+
 ## Contributing
 
-This is an open design process. See [DESIGN.md](DESIGN.md) for architecture.
+This is an open design process. See [DESIGN.md](DESIGN.md) for original architecture and [ARCHITECTURE.md](ARCHITECTURE.md) for ttyclaude2.
 
 **Areas needing decisions:**
 - TUI framework (tui-rs vs raw terminal)
