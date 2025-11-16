@@ -1,0 +1,20 @@
+
+
+[package]
+
+name = "ttyclaude"
+version = "0.1.0"
+edition = "2021"
+
+
+
+[dependencies]
+
+tokio = { version = "1", features = ["full"] }
+ratatui = "0.29"
+crossterm = "0.28"
+
+configparser = "3.0"  # For .ini parsing
+serde = { version = "1.0", features = ["derive"] }  # For struct deserialization
+lazy_static = "1.4"   # For global config access (optional)
+
