@@ -1,0 +1,25 @@
+# Rust build artifacts
+target/
+**/target/
+
+# Debug files
+**/*.rs.bk
+*.pdb
+
+# Cargo cache
+.cargo/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+.env.local
